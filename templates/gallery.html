@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Галерея{% endblock %}
+{% block content %}
+<section class="fade-in">
+    <h2 class="page-title">🖼️ Галерея генераций</h2>
+    {% if gallery %}
+    <div class="gallery-grid">
+        {% for item in gallery %}
+        <div class="gallery-item gothic-item">
+            <a href="#lb-{{ item.id }}">
+                <img src="/gallery/{{ item.file }}" alt="{{ item.style }}">
+            </a>
+            <div class="gallery-item-meta">
+                <span class="time">{{ item.time }}</span>
+                <span class="style">{{ item.style }}</span>
+            </div>
+            <form method="POST" action="/delete" class="gallery-item-actions">
+                <input type="hidden" name="file" value="{{ item.file }}">
+                <button type="submit" class="btn-delete">🗑️ Удалить</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% for item in gallery %}
+    <div class="lightbox gothic-lightbox" id="lb-{{ item.id }}">
+        <div class="lightbox-content">
+            <a href="/gallery" class="lightbox-close">×</a>
+            <img src="/gallery/{{ item.file }}" alt="">
+            <div class="lightbox-meta">
+                <div><strong>Стиль:</strong> {{ item.style }}</div>
+                <div><strong>Время:</strong> {{ item.time }}</div>
+                <div><strong>Движок:</strong> {{ item.engine }}</div>
+                <pre>{{ item.prompt }}</pre>
+                <form method="POST" action="/feedback" class="feedback-form">
+                    <input type="hidden" name="image_id" value="{{ item.id }}">
+                    <button type="submit" name="rating" value="like" class="btn-like">👍 Верно</button>
+                    <button type="submit" name="rating" value="dislike" class="btn-dislike">👎 Ошибка</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p class="empty">Галерея пуста. Создайте первую генерацию!</p>
+    {% endif %}
+</section>
+{% endblock %}

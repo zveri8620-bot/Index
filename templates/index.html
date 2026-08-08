@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🏛️ Реставратор фасадов</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="stars-container">
+    {% for i in range(9) %}
+    <div class="star" style="left: {{ 5 + i * 10 }}%; animation-delay: {{ i * 0.8 }}s;"></div>
+    {% endfor %}
+</div>
+<div class="fireflies">
+    <div class="firefly" style="top: 20%; left: 15%;"></div>
+    <div class="firefly" style="top: 60%; left: 80%; animation-delay: 2s;"></div>
+    <div class="firefly" style="top: 40%; left: 50%; animation-delay: 4s;"></div>
+    <div class="firefly" style="top: 75%; left: 25%; animation-delay: 1s;"></div>
+    <div class="firefly" style="top: 30%; left: 70%; animation-delay: 3s;"></div>
+</div>
+
+<header class="hero">
+    <div class="gothic-arch"><h1>🏛️ Реставратор фасадов</h1></div>
+    <p class="subtitle">Восстановление облика здания с помощью ИИ</p>
+    <div class="badges">
+        <span class="badge">🐍 Python + Flask</span>
+        <span class="badge">🎨 {{ styles|length }} стилей</span>
+        <span class="badge">📁 Датасет: {{ dataset_stats.images }} примеров</span>
+        <span class="badge">🧠 Точность {{ "%.0f"|format(learning.accuracy * 100) }}%</span>
+    </div>
+</header>
+
+<nav class="topnav">
+    <button class="nav-btn active" onclick="showPage('index')">📝 Генерация</button>
+    <button class="nav-btn" onclick="showPage('gallery')">🖼️ Галерея</button>
+    <button class="nav-btn" onclick="showPage('learning')">🧠 Обучение</button>
+    <button class="nav-btn" onclick="showPage('about')">ℹ️ О проекте</button>
+</nav>
+
+<main class="container">
+    {% if error %}<div class="alert alert-error">❌ {{ error }}</div>{% endif %}
+    {% if notice %}<div class="alert alert-success">✅ {{ notice }}</div>{% endif %}
+
+    <section class="page active" id="page-index">
+        <div class="card gothic-card">
+            <h2 class="page-title">📝 Генерация по описанию</h2>
+            <form method="POST" action="/generate">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>🏛️ Стиль</label>
+                        <select name="style">{% for s in styles %}<option>{{ s }}</option>{% endfor %}</select>
+                    </div>
+                    <div class="form-group">
+                        <label>🎯 Задача</label>
+                        <select name="task">
+                            <option value="facade">🏛️ Фасад (3:4)</option>
+                            <option value="plan">📐 Планировка (1:1)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>🌱 Seed (0 = случайный)</label>
+                        <input type="number" name="seed" value="0" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label>🤖 Модель</label>
+                        <select name="model">
+                            <option value="sana">🎨 sana (Pollinations)</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>✍️ Описание здания</label>
+                        <textarea name="description" rows="4" required
+                                  placeholder="Пятиэтажный дом 1950-х, арочные окна, лепнина..."></textarea>
+                    </div>
+                    <div class="form-group full-width">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="internet_search" checked>
+                            🔍 Умный режим (Wikipedia + ключевые слова)
+                        </label>
+                    </div>
+                </div>
+                <div class="actions">
+                    <button type="submit" class="btn gothic-btn">✨ Сгенерировать</button>
+                </div>
+                <p class="hint">⏳ 10–90 сек · Python-сервер с Horde fallback</p>
+            </form>
+
+            {% if result %}
+            <div class="result">
+                <img src="{{ result.image }}" alt="Результат">
+                <div class="result-meta">
+                    <div><strong>Движок:</strong> {{ result.engine }}</div>
+                    <div><strong>Размер:</strong> {{ result.width }}×{{ result.height }}</div>
+                    {% if result.dataset_ctx %}
+                    <details><summary>📁 Контекст из датасета</summary><pre>{{ result.dataset_ctx }}</pre></details>
+                    {% endif %}
+                    {% if result.reference %}
+                    <details><summary>📚 Референс Wikipedia</summary><pre>{{ result.reference }}</pre></details>
+                    {% endif %}
+                    {% if result.keywords %}
+                    <details><summary>🔑 Ключевые слова</summary><pre>{{ result.keywords }}</pre></details>
+                    {% endif %}
+                    <details><summary>📋 Промпт</summary><pre>{{ result.prompt }}</pre></details>
+                    <div class="result-actions">
+                        <a class="btn btn-secondary" href="{{ result.image }}" download>⬇️ Скачать</a>
+                        <form method="POST" action="/feedback" class="feedback-form">
+                            <input type="hidden" name="image_id" value="{{ result.id }}">
+                            <button type="submit" name="rating" value="like" class="btn-like">👍 Верно</button>
+                            <button type="submit" name="rating" value="dislike" class="btn-dislike">👎 Ошибка</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="page" id="page-gallery">
+        <h2 class="page-title">🖼️ Галерея генераций</h2>
+        {% if gallery %}
+        <div class="gallery-grid">
+            {% for item in gallery %}
+            <div class="gallery-item">
+                <img src="/gallery/{{ item.file }}" alt="{{ item.style }}" onclick="openLightbox({{ loop.index0 }})">
+                <div class="gallery-item-meta">
+                    <span class="time">{{ item.time }}</span>
+                    <span class="style">{{ item.style }}</span>
+                </div>
+                <form method="POST" action="/delete" class="gallery-item-actions">
+                    <input type="hidden" name="file" value="{{ item.file }}">
+                    <button type="submit" class="btn-delete">🗑️ Удалить</button>
+                </form>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p class="empty">Галерея пуста. Создайте первую генерацию!</p>
+        {% endif %}
+    </section>
+
+    <section class="page" id="page-learning">
+        <div class="card gothic-card">
+            <h2 class="page-title">🧠 Статистика обучения</h2>
+            <div class="learning-stats">
+                <div class="stat-card"><div class="stat-value">{{ learning.total_generations }}</div><div class="stat-label">Всего генераций</div></div>
+                <div class="stat-card stat-like"><div class="stat-value">{{ learning.total_likes }}</div><div class="stat-label">👍 Лайков</div></div>
+                <div class="stat-card stat-dislike"><div class="stat-value">{{ learning.total_dislikes }}</div><div class="stat-label">👎 Дизлайков</div></div>
+                <div class="stat-card stat-accuracy"><div class="stat-value">{{ "%.1f"|format(learning.accuracy * 100) }}%</div><div class="stat-label">Точность</div></div>
+            </div>
+            {% if learning.style_weights %}
+            <h3 style="color: var(--accent); margin-top: 20px;">📊 Успешность стилей</h3>
+            <div class="style-weights">
+                {% for style, weight in learning.style_weights.items() %}
+                <div class="weight-item">
+                    <span class="weight-name">{{ style }}</span>
+                    <div class="weight-bar"><div class="weight-fill" style="width: {{ weight * 100 }}%"></div></div>
+                    <span class="weight-value">{{ "%.0f"|format(weight * 100) }}%</span>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="empty">Пока нет данных. Оцените несколько генераций 👍/👎</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="page" id="page-about">
+        <div class="card gothic-card">
+            <h2 class="page-title">ℹ️ О проекте</h2>
+            <div class="about-content">
+                <p><strong>«Реставратор фасадов»</strong> — Python-сервер для восстановления облика зданий.</p>
+                <h3>Возможности</h3>
+                <ul>
+                    <li>🎨 <strong>Pollinations</strong> — модель <code>sana</code> (основной движок)</li>
+                    <li>🤖 <strong>AI Horde</strong> — fallback на 100+ живых моделей</li>
+                    <li>📚 <strong>Wikipedia</strong> — референсы стилей</li>
+                    <li>📁 <strong>Датасет</strong> — ваши примеры из папки <code>dataset/</code></li>
+                    <li>🧠 <strong>Обучение</strong> — на ваших оценках 👍/👎</li>
+                    <li>🔌 <strong>Офлайн</strong> — берёт фото из датасета при недоступности API</li>
+                </ul>
+                <h3>Технологии</h3>
+                <p>Python 3.13 · Flask · Requests · Pillow · HTML5 · CSS3</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<div class="lightbox" id="lightbox">
+    <div class="lightbox-content">
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <img src="" alt="" id="lb-img">
+        <div class="lightbox-meta" id="lb-meta"></div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-col">
+            <h4>🏛️ Реставратор фасадов</h4>
+            <p>Python-сервер с ИИ для архитектуры.</p>
+        </div>
+        <div class="footer-col">
+            <h4>Статистика</h4>
+            <p>Генераций: {{ learning.total_generations }} · 👍 {{ learning.total_likes }} · 👎 {{ learning.total_dislikes }}</p>
+            <p>Точность: {{ "%.1f"|format(learning.accuracy * 100) }}%</p>
+        </div>
+        <div class="footer-col">
+            <h4>Датасет</h4>
+            <p>Стилей: {{ dataset_stats.styles }}</p>
+            <p>Примеров: {{ dataset_stats.images }}</p>
+        </div>
+        <div class="footer-col">
+            <h4>Технологии</h4>
+            <p>Pollinations · Sana · Horde · Flask</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© {{ year }} Реставратор фасадов · Python 3.13</p>
+    </div>
+</footer>
+
+<script>
+const galleryData = {{ gallery | tojson | safe }};
+
+function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    window.scrollTo(0, 0);
+}
+
+function openLightbox(idx) {
+    const item = galleryData[idx];
+    if (!item) return;
+    document.getElementById('lb-img').src = '/gallery/' + item.file;
+    document.getElementById('lb-meta').innerHTML = `
+        <div><strong>Стиль:</strong> ${item.style}</div>
+        <div><strong>Время:</strong> ${item.time}</div>
+        <div><strong>Движок:</strong> ${item.engine || ''}</div>
+        <pre>${item.prompt || ''}</pre>
+    `;
+    document.getElementById('lightbox').classList.add('active');
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+}
+
+document.getElementById('lightbox').addEventListener('click', (e) => {
+    if (e.target.id === 'lightbox') closeLightbox();
+});
+</script>
+
+</body>
+</html>

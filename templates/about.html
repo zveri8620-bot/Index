@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}О проекте{% endblock %}
+{% block content %}
+<section class="page-card card gothic-card fade-in">
+    <h2 class="page-title">ℹ️ О проекте</h2>
+    <div class="about-content">
+        <p><strong>«Реставратор фасадов»</strong> — нейросеть, которая восстанавливает облик зданий по фрагментам фотографий и текстовым описаниям.</p>
+
+        <h3>Как это работает</h3>
+        <ul>
+            <li>🔍 Ищет референсы в Википедии про выбранный стиль</li>
+            <li>🔑 Извлекает ключевые слова из вашего описания</li>
+            <li>📁 Использует примеры из датасета как референсы</li>
+            <li>🧠 Обучается на ваших оценках 👍/👎</li>
+        </ul>
+
+        <h3>Движки генерации</h3>
+        <ul>
+            <li>⚡ <strong>Flux / Turbo</strong> (Pollinations) — быстрые, без ключа</li>
+            <li>🎨 <strong>Stable Diffusion</strong> (AI Horde) — запасной, для фрагментов</li>
+        </ul>
+
+        <h3>Датасет</h3>
+        <p>В папке <code>dataset/</code> лежат примеры домов по стилям. Нейросеть читает описания из <code>info.txt</code> и использует их при генерации, чтобы рисовать точнее.</p>
+
+        <h3>Технологии</h3>
+        <p>Python 3.13 · Flask · HTML5 · CSS3 · Без JavaScript · Работает без VPN</p>
+    </div>
+</section>
+{% endblock %}

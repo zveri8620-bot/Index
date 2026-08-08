@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Датасет{% endblock %}
+{% block content %}
+<section class="fade-in">
+    <h2 class="page-title">📁 Датасет примеров</h2>
+    <p class="page-subtitle">Примеры домов, сгруппированные по стилю (стиль определяется по имени файла). Нейросеть использует их как референсы при генерации.</p>
+
+    {% if dataset %}
+    <div class="dataset-grid">
+        {% for style_name, data in dataset.items() %}
+        <div class="dataset-card card">
+            <h3 class="dataset-folder">🗂️ {{ style_name }}</h3>
+            {% if data.images %}
+            <div class="dataset-images">
+                {% for img in data.images %}
+                <div class="dataset-img-wrap">
+                    <img src="/dataset/img/{{ img }}" alt="{{ img }}">
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="dataset-empty">Пока нет примеров</p>
+            {% endif %}
+            <div class="dataset-count">Примеров: {{ data.count }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="empty">Датасет пуст.</p>
+    {% endif %}
+</section>
+{% endblock %}
