@@ -1,0 +1,178 @@
+[
+  {
+    "id": "20260804_152255_860fbb",
+    "rating": "like",
+    "time": "04.08.2026 15:23:10",
+    "prompt": "industrial factory, red brick, sawtooth roof, large windows, Дом, architectural photo, building exterior, facade view, daylight, no people, no humans, empty street, building only, high detail",
+    "style": "Промышленное здание",
+    "engine": "pollinations-flux"
+  },
+  {
+    "id": "20260804_145330_c2c376",
+    "rating": "like",
+    "time": "04.08.2026 15:23:15",
+    "prompt": "architectural floor plan drawing, top-down orthographic view, black ink lines on white paper, clean blueprint, room labels, no perspective, Дом, gothic revival, pointed arches, rose window, grey stone, vertical proportions, spires, absolutely no people, no humans, no pedestrians, no persons, no faces, no silhouettes, no crowd, empty street, building only, high detail",
+    "style": "Неоготика",
+    "engine": "pollinations-flux"
+  },
+  {
+    "id": "20260804_145145_734fb8",
+    "rating": "like",
+    "time": "04.08.2026 15:23:26",
+    "prompt": "masterpiece, professional architectural photography, full exterior facade view, straight-on perspective, golden hour, photorealistic, 8k uhd, Дом, gothic revival, pointed arches, rose window, grey stone, vertical proportions, spires, absolutely no people, no humans, no pedestrians, no persons, no faces, no silhouettes, no crowd, empty street, building only, high detail",
+    "style": "Неоготика",
+    "engine": "pollinations-flux"
+  },
+  {
+    "id": "20260804_152211_5cd8d4",
+    "rating": "dislike",
+    "time": "04.08.2026 15:23:36",
+    "prompt": "Soviet brezhnevka brick apartment block, repetitive balconies, Дом, architectural photo, building exterior, facade view, daylight, no people, no humans, empty street, building only, high detail",
+    "style": "Брежневка",
+    "engine": "pollinations-turbo"
+  },
+  {
+    "id": "20260804_145100_88ab69",
+    "rating": "dislike",
+    "time": "04.08.2026 15:23:45",
+    "prompt": "masterpiece, professional architectural photography, full exterior facade view, straight-on perspective, golden hour, photorealistic, 8k uhd, дом, high-tech architecture, exposed steel tubes, glass curtain walls, external pipes, absolutely no people, no humans, no pedestrians, no persons, no faces, no silhouettes, no crowd, empty street, building only, high detail",
+    "style": "Хай-тек",
+    "engine": "pollinations-turbo"
+  },
+  {
+    "id": "20260804_145014_c4b5de",
+    "rating": "dislike",
+    "time": "04.08.2026 15:23:51",
+    "prompt": "masterpiece, professional architectural photography, full exterior facade view, straight-on perspective, golden hour, photorealistic, 8k uhd, ДОМ, Soviet khrushchyovka panel block, 5 stories, plain concrete panels, small balconies, 1960s, absolutely no people, no humans, no pedestrians, no persons, no faces, no silhouettes, no crowd, empty street, building only, high detail",
+    "style": "Хрущёвка",
+    "engine": "pollinations-turbo"
+  },
+  {
+    "id": "20260804_144929_568801",
+    "rating": "dislike",
+    "time": "04.08.2026 15:23:55",
+    "prompt": "masterpiece, professional architectural photography, full exterior facade view, straight-on perspective, golden hour, photorealistic, 8k uhd, minimalist architecture, clean white volumes, frameless glazing, flat roof, absolutely no people, no humans, no pedestrians, no persons, no faces, no silhouettes, no crowd, empty street, building only, high detail",
+    "style": "Минимализм",
+    "engine": "pollinations-turbo"
+  },
+  {
+    "id": "20260804_144842_d3e9a6",
+    "rating": "like",
+    "time": "04.08.2026 15:24:01",
+    "prompt": "masterpiece, professional architectural photography, full exterior facade view, straight-on perspective, golden hour, photorealistic, 8k uhd, ДОМ, baroque palace facade, rich stucco, pilasters, curved cornices, pastel colors, absolutely no people, no humans, no pedestrians, no persons, no faces, no silhouettes, no crowd, empty street, building only, high detail",
+    "style": "Барокко",
+    "engine": "pollinations-turbo"
+  },
+  {
+    "id": "20260804_144717_c1e3ab",
+    "rating": "like",
+    "time": "04.08.2026 15:24:10",
+    "prompt": "masterpiece, professional architectural photography, full exterior facade view, straight-on perspective, golden hour, photorealistic, 8k uhd, ДОМ, traditional Russian wooden architecture, log house, carved window frames, ornate porch, absolutely no people, no humans, no pedestrians, no persons, no faces, no silhouettes, no crowd, empty street, building only, high detail",
+    "style": "Деревянное зодчество",
+    "engine": "pollinations-flux"
+  },
+  {
+    "id": "20260804_144632_c6098a",
+    "rating": "like",
+    "time": "04.08.2026 15:24:13",
+    "prompt": "masterpiece, professional architectural photography, full exterior facade view, straight-on perspective, golden hour, photorealistic, 8k uhd, ДОМ, traditional Russian wooden architecture, log house, carved window frames, ornate porch, absolutely no people, no humans, no pedestrians, no persons, no faces, no silhouettes, no crowd, empty street, building only, high detail",
+    "style": "Деревянное зодчество",
+    "engine": "pollinations-turbo"
+  },
+  {
+    "id": "20260804_152434_c6718d",
+    "rating": "like",
+    "time": "04.08.2026 15:24:58",
+    "prompt": "gothic revival, pointed arches, rose window, grey stone, spires, Дом, architectural photo, building exterior, facade view, daylight, no people, no humans, empty street, building only, high detail, masterpiece",
+    "style": "Неоготика",
+    "engine": "pollinations-turbo"
+  },
+  {
+    "id": "20260804_152520_c88ca9",
+    "rating": "dislike",
+    "time": "04.08.2026 15:25:30",
+    "prompt": "Собор святого Паула, architectural photo, building exterior, facade view, daylight, no people, no humans, empty street, building only, high detail",
+    "style": "Без стиля",
+    "engine": "pollinations-turbo"
+  },
+  {
+    "id": "20260804_152614_d80eb1",
+    "rating": "dislike",
+    "time": "04.08.2026 15:26:27",
+    "prompt": "high-tech architecture, exposed steel, glass curtain walls, Дом, architectural photo, building exterior, facade view, daylight, no people, no humans, empty street, building only, high detail",
+    "style": "Хай-тек",
+    "engine": "pollinations-turbo"
+  },
+  {
+    "id": "20260804_152700_e4b3a7",
+    "rating": "like",
+    "time": "04.08.2026 15:27:10",
+    "prompt": "Stalinist empire skyscraper, tiered tower with spire, monumental, Дом, architectural photo, building exterior, facade view, daylight, no people, no humans, empty street, building only, high detail",
+    "style": "Сталинский ампир / высотка",
+    "engine": "pollinations-turbo"
+  },
+  {
+    "id": "20260804_152850_380d0c",
+    "rating": "like",
+    "time": "04.08.2026 15:29:33",
+    "prompt": "contemporary residential complex, ventilated facade, large glazing, Дом, architectural photo, building exterior, facade view, daylight, no people, no humans, empty street, building only, high detail",
+    "style": "Современный ЖК",
+    "engine": "pollinations-turbo"
+  },
+  {
+    "id": "20260804_152945_3d57c4",
+    "rating": "like",
+    "time": "04.08.2026 15:30:14",
+    "prompt": "rococo palace facade, pastel colors, delicate stucco, Дом, architectural photo, building exterior, facade view, daylight, no people, no humans, empty street, building only, high detail",
+    "style": "Рококо",
+    "engine": "pollinations-turbo"
+  },
+  {
+    "id": "20260804_153030_e15880",
+    "rating": "dislike",
+    "time": "04.08.2026 15:30:42",
+    "prompt": "Soviet khrushchyovka panel block, 5 stories, plain concrete panels, Дом, architectural photo, building exterior, facade view, daylight, no people, no humans, empty street, building only, high detail",
+    "style": "Хрущёвка",
+    "engine": "pollinations-turbo"
+  },
+  {
+    "id": "20260804_153117_3e5335",
+    "rating": "like",
+    "time": "04.08.2026 15:31:28",
+    "prompt": "colonial architecture, verandas with columns, symmetrical facade, Дом, architectural photo, building exterior, facade view, daylight, no people, no humans, empty street, building only, high detail",
+    "style": "Колониальный стиль",
+    "engine": "pollinations-turbo"
+  },
+  {
+    "id": "20260804_153206_8ef452",
+    "rating": "like",
+    "time": "04.08.2026 15:32:56",
+    "prompt": "Soviet brutalist architecture, raw concrete, monumental forms, Дом, architectural photo, building exterior, facade view, daylight, no people, no humans, empty street, building only, high detail",
+    "style": "Советский модернизм / брутализм",
+    "engine": "pollinations-turbo"
+  },
+  {
+    "id": "20260804_154131_aea840",
+    "rating": "dislike",
+    "time": "04.08.2026 15:41:44",
+    "prompt": "дом из магистра дьявольского культа китайский, architectural photo, building exterior, facade view, daylight, no people, no humans, empty street, building only, high detail",
+    "style": "Без стиля",
+    "engine": "pollinations-flux"
+  },
+  {
+    "id": "20260804_154131_aea840",
+    "rating": "dislike",
+    "time": "04.08.2026 15:53:41",
+    "prompt": "дом из магистра дьявольского культа китайский, architectural photo, building exterior, facade view, daylight, no people, no humans, empty street, building only, high detail",
+    "style": "Без стиля",
+    "engine": "pollinations-flux"
+  },
+  {
+    "id": "20260804_155449_245f67",
+    "rating": "dislike",
+    "time": "04.08.2026 15:55:25",
+    "prompt": "дом магистр дьявольского культа, architectural photo, building exterior, facade view, daylight, no people, no humans, empty street, building only, high detail",
+    "style": "Без стиля",
+    "engine": "pollinations-turbo"
+  }
+]
